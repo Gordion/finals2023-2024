@@ -1,38 +1,212 @@
-.App {
+/* HOMEPAGE */
+/* .header {
+  width: 85%;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-image: url("images/Rostochya.mp4");
+  background-size: cover;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+video {
+  width: 100%;
+  height: 65vh;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 65vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* .video-wrapper {
+
+  position: relative;
+
+  width: 400px;
+  height: 200px;
+
+
+  overflow: hidden;
+
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.navbar {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.main-title {
+  top: 0;
+  width: 100%;
+  height: 75%;
+  flex-direction: column;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3rem;
+  font-family: "Souses", sans-serif;
+  font-weight: 400;
+  user-select: none;
+}
+
+.main-button {
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  margin-top: 40px;
+  border: 3px solid white;
+  padding: 10px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.current-selected {
+  text-decoration: overline;
+}
+
+.navbar img {
+  color: white;
+  width: 35px;
+}
+
+.navbar-main {
+  display: flex;
+  gap: 20px;
+}
+
+.main-news {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* color: white; */
+  font-size: 1.3rem;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  user-select: none;
+  /* margin-left: -20px;
+  margin-top: -20px; */
+  margin-top: -40px;
+  margin-left: -250px;
+}
+
+.news-container {
+  width: 15%;
+  border: 1px solid black;
+  min-height: 200px;
+  margin-top: 20px;
+  /* background-color: rgba(65, 176, 95, 0.2); */
+  border-radius: 10px;
+}
+
+.news-head {
+  border-bottom: 1px solid grey;
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.news-body {
+  padding: 15px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.news-link {
+  padding: 10px 0px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weather {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1.3rem;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  user-select: none;
+  margin-top: -90px;
+  margin-left: 250px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  background-color: black;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.temperature {
+  display: flex;
+  font-weight: 400;
+  justify-content: center;
+  margin-left: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.weather img {
+  display: flex;
+  justify-content: center;
 }
