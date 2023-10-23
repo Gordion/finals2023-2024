@@ -5,10 +5,10 @@ export default function Layout() {
     <section className="navbar">
       <div className="navbar-main">
         <ul>
-          <li className="current-selected">
+          <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="current-selected">
             <Link to="/map">Карта</Link>
           </li>
           <li>Новини</li>

@@ -15,6 +15,13 @@ import forest from "../images/forest.png";
 import veres from "../images/pine-treeR.png";
 import swamp from "../images/swampR.png";
 import listSearchIcon from "../images/search.png";
+import backArrow from "../images/left-arrow.png";
+import bukovi from "../images/bukovi-lisy-modified.jpg";
+import koroleva from "../images/Koroleva-hora.jpg";
+import muzey from "../images/Muzey-pryrody-modified.jpg";
+import profil from "../images/Profil-A.Piasetskoho-modified.jpg";
+import zalyvky from "../images/Zalyvky-modified.jpg";
+import cross from "../images/close.png";
 import { Icon, L } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
@@ -82,7 +89,18 @@ export default function Map() {
   return (
     <>
       <img className="listSearch" src={listSearchIcon} />
-      <div className="side-menu"></div>
+      <div className="side-menu">
+        <div className="list-search-bar">
+          <img className="backArrow left" src={backArrow} />
+          <span className="search-text">Пошук</span>
+          <p className="right"></p>
+        </div>
+        <img className="monument" src={profil} />
+        <img className="monument" src={koroleva} />
+        <img className="monument" src={zalyvky} />
+        <img className="monument" src={bukovi} />
+        <img className="monument" src={muzey} />
+      </div>
       <div className="map">
         <MapContainer
           style={{ width: "100%", height: "87.9vh" }}
@@ -117,7 +135,22 @@ export default function Map() {
         </Marker> */}
         </MapContainer>
       </div>
-      <div className="detailed-info"></div>
+      <div className="detailed-info">
+        <img className="monument-full" src={koroleva} />
+        <img className="cross" src={cross} />
+        <div className="monument-info">
+          <span className="monument-title">
+            Королева гора над Янівським ставом
+          </span>
+          <p className="monument-text">
+            Саме тут Іван Франко написав свого "Мойсея". З цього місця
+            відкриваються величні панорами неповторних розточанських ландшафтів.
+            Польодовиковий останець, що височіє над Янівським ставом, в минулому
+            – одне з найулюбленіших місць відпочинку польських королів.
+          </p>
+          <span className="monument-button">Продовження</span>
+        </div>
+      </div>
     </>
   );
 }
