@@ -6,7 +6,7 @@ export default function Layout() {
       <div className="navbar-main">
         <ul>
           <li className="current-selected">
-            <Link to="/homepage">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/map">Карта</Link>

@@ -7,7 +7,7 @@ export default function Homepage() {
     <div className="main">
       <div className="overlay"></div>
       <video src={videoBG} autoPlay loop muted />
-      <section className="navbar">
+      {/* <section className="navbar">
         <div className="navbar-main">
           <ul>
             <li className="current-selected">Home</li>
@@ -18,7 +18,7 @@ export default function Homepage() {
           </ul>
           <img src={burger} alt="burger-icon" />
         </div>
-      </section>
+      </section> */}
       <section className="main-title">
         <p>Природний заповідник "Розточчя"</p>
         <div className="main-button">Відкрити карту</div>
