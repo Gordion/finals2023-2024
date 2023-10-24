@@ -8,11 +8,13 @@ export default function Layout() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li className="current-selected">
+          <li>
             <Link to="/map">Карта</Link>
           </li>
           <li>Новини</li>
-          <li>Кращі маршрути</li>
+          <li className="current-selected">
+            <Link to="/touroute">Кращі маршрути</Link>
+          </li>
           <li>Додаткова інформація</li>
         </ul>
         <img src={burger} alt="burger-icon" />

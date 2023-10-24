@@ -5,6 +5,7 @@ import Homepage from "./components/homepage";
 import Map from "./components/map";
 import Layout from "./components/layout";
 import Footer from "./components/footer";
+import Touroute from "./components/touroute";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/touroute" element={<Touroute />} />
         </Routes>
       </BrowserRouter>
       <Footer />

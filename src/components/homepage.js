@@ -34,10 +34,10 @@ export default function Homepage() {
         </div>
       </section>
       <section className="weather">
-        <p>Температура в Івано-Франково</p>
+        <p>Температура в Івано-Франковому</p>
         <img src={weatherIcon} />
         <div className="temperature">
-          <h2>21</h2>
+          <h2>15</h2>
           <p>°C</p>
         </div>
       </section>

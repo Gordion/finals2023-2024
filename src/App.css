@@ -72,7 +72,7 @@ video {
 .navbar {
   top: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   flex-direction: column;
   position: absolute;
   display: flex;
@@ -84,10 +84,11 @@ video {
   font-size: 1.5rem;
   margin-top: 20px;
   z-index: 100;
+  user-select: none;
 }
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
 .detailed-info {
@@ -357,4 +358,127 @@ footer {
   /* background-color: black; */
   border-radius: 50%;
   box-shadow: 0 0 0 1px white;
+}
+
+.drag-list {
+  display: flex;
+  gap: 20px;
+  padding: 20px 40px;
+  /* border: 1px solid black; */
+  width: fit-content;
+  box-shadow: 0 0 0 1px black;
+  min-width: 522px;
+  min-height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.draggable {
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: fit-content;
+  background-color: white;
+  min-width: 120px;
+}
+
+.touroute {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  margin-top: 100px;
+  user-select: initial;
+}
+
+.drag-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.drag-title {
+  font-size: 24px;
+  max-width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.drag-priority {
+  display: flex;
+  flex-direction: column;
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black; */
+  width: 400px;
+  height: fit-content;
+  margin-top: 50px;
+}
+
+.priority {
+  border: 1px solid black;
+  height: 60px;
+  padding: 10px;
+  width: 200px;
+  border-bottom: none;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+}
+
+.highest {
+  background-color: #00ff00;
+  border-top: 1px solid black;
+}
+.high {
+  background-color: #95ff66;
+}
+.medium {
+  background-color: #c8ffb3;
+}
+.low {
+  background-color: #ffe3d6;
+}
+
+.zero {
+  background-color: #fdb7b1;
+  border-bottom: 1px solid black;
+}
+
+.drag-priority > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.number {
+  font-size: 20px;
+}
+
+.drag-button {
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  margin-left: 20px;
+  width: 180px;
+  text-align: center;
+}
+
+.drag-result {
+  font-size: 20px;
+}
+
+.drag-result > span {
+  font-weight: 600;
 }
