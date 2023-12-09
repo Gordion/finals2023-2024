@@ -7,7 +7,7 @@
 // } from "https://cdn.esm.sh/react-leaflet";
 import { MapContainer, Popup, Marker, TileLayer, useMap } from "react-leaflet";
 // import L from "leaflet";
-
+import { React, useState } from "react";
 import museum from "../images/museumR.png";
 import lake from "../images/dockR.png";
 import forestProfile from "../images/treesR.png";
@@ -26,14 +26,10 @@ import { Icon, L } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import Infobox from "./infobox";
+import text from "./details-texts.js";
 
 export default function Map() {
-  // let DefaultIcon = L.icon({
-  //   iconUrl: icon,
-  //   shadowUrl: iconShadow,
-  // });
-
-  // L.Marker.prototype.options.icon = DefaultIcon;
   const museumIcon = new Icon({
     iconUrl: museum,
     iconSize: [38, 38],
@@ -85,22 +81,40 @@ export default function Map() {
       icon: museumIcon,
     },
   ];
+  const [searchBlockVisible, setSearchBlockVisible] = useState(true);
+  const [infoBlockVisible, setInfoBlockVisible] = useState(true);
+  const toggleSearchBlock = () => {
+    setSearchBlockVisible(!searchBlockVisible);
+  };
+  const toggleInfoBlock = () => {
+    setInfoBlockVisible(!infoBlockVisible);
+  };
 
   return (
     <>
-      <img className="listSearch" src={listSearchIcon} />
-      <div className="side-menu">
-        <div className="list-search-bar">
-          <img className="backArrow left" src={backArrow} />
-          <span className="search-text">Пошук</span>
-          <p className="right"></p>
+      <img
+        className="listSearch"
+        src={listSearchIcon}
+        onClick={toggleSearchBlock}
+      />
+      {searchBlockVisible && (
+        <div className="side-menu">
+          <div className="list-search-bar">
+            <img
+              className="backArrow left"
+              src={backArrow}
+              onClick={toggleSearchBlock}
+            />
+            <span className="search-text">Пошук</span>
+            <p className="right"></p>
+          </div>
+          <img className="monument" src={profil} />
+          <img className="monument" src={koroleva} />
+          <img className="monument" src={zalyvky} />
+          <img className="monument" src={bukovi} />
+          <img className="monument" src={muzey} />
         </div>
-        <img className="monument" src={profil} />
-        <img className="monument" src={koroleva} />
-        <img className="monument" src={zalyvky} />
-        <img className="monument" src={bukovi} />
-        <img className="monument" src={muzey} />
-      </div>
+      )}
       <div className="map">
         <MapContainer
           style={{ width: "100%", height: "87.9vh" }}
@@ -116,12 +130,6 @@ export default function Map() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-
-          {/* <TileLayer
-          attribution="Esri World Imagery"
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
-        /> */}
-
           {markers.map((marker) => (
             <Marker position={marker.geolocation} icon={marker.icon}>
               <Popup>{marker.popUp}</Popup>
@@ -135,22 +143,32 @@ export default function Map() {
         </Marker> */}
         </MapContainer>
       </div>
-      <div className="detailed-info">
-        <img className="monument-full" src={koroleva} />
-        <img className="cross" src={cross} />
-        <div className="monument-info">
-          <span className="monument-title">
-            Королева гора над Янівським ставом
-          </span>
-          <p className="monument-text">
-            Саме тут Іван Франко написав свого "Мойсея". З цього місця
-            відкриваються величні панорами неповторних розточанських ландшафтів.
-            Польодовиковий останець, що височіє над Янівським ставом, в минулому
-            – одне з найулюбленіших місць відпочинку польських королів.
-          </p>
-          <span className="monument-button">Продовження</span>
-        </div>
-      </div>
+      {infoBlockVisible && (
+        // <div className="detailed-info">
+        //   <img className="monument-full" src={koroleva} />
+        //   <img className="cross" src={cross} onClick={toggleInfoBlock} />
+        //   <div className="monument-info">
+        //     <span className="monument-title">
+        //       Королева гора над Янівським ставом
+        //     </span>
+        //     <p className="monument-text">
+        //       Саме тут Іван Франко написав свого "Мойсея". З цього місця
+        //       відкриваються величні панорами неповторних розточанських
+        //       ландшафтів. Польодовиковий останець, що височіє над Янівським
+        //       ставом, в минулому – одне з найулюбленіших місць відпочинку
+        //       польських королів.
+        //     </p>
+        //     <span className="monument-button">Продовження</span>
+        //   </div>
+        // </div>
+        <Infobox
+          cross={cross}
+          monImage={koroleva}
+          toggleFunction={toggleInfoBlock}
+          title={text[0].title}
+          desc={text[0].desc}
+        />
+      )}
     </>
   );
 }

@@ -78,7 +78,7 @@ video {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: black;
+
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
@@ -86,6 +86,15 @@ video {
   z-index: 100;
   user-select: none;
 }
+
+.navbar-white {
+  color: white;
+}
+
+.navbar-black {
+  color: black;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -264,32 +273,31 @@ a {
 }
 
 .main-news {
-  top: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width: 100vw;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  /* color: white; */
+  justify-content: center;
+  align-items: end;
   font-size: 1.3rem;
-  flex-direction: column;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   user-select: none;
-  /* margin-left: -20px;
-  margin-top: -20px; */
-  margin-top: -40px;
-  margin-left: -250px;
+  /* margin-top: -40px;
+  margin-left: 40px; */
+  margin: -20px 20px 20px;
+  gap: 20px;
 }
 
 .news-container {
   width: 15%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  color: white;
   min-height: 200px;
-  margin-top: 20px;
+  margin-top: 50px;
   /* background-color: rgba(65, 176, 95, 0.2); */
   border-radius: 10px;
+  background-color: rgb(46, 73, 133);
+  height: 220px;
+  padding: 5px;
 }
 
 .news-head {
@@ -300,33 +308,65 @@ a {
 
 .news-body {
   padding: 15px;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  /* border-top: 1px solid grey;
+  border-bottom: 1px solid grey; */
   text-align: center;
 }
 
-.news-link {
+/* .news-link {
   padding: 10px 0px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
-}
+} */
 
 .weather {
-  top: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  /* bottom: 70px;
+  right: 150px; */
+  /* position: absolute;
+  text-align: center; */
+  /* width: fit-content;
+  height: fit-content; */
+  /* height: 100%; */
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  text-align: center;
+  justify-content: center;
   font-size: 1.3rem;
   flex-direction: column;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
   user-select: none;
-  margin-top: -90px;
-  margin-left: 250px;
+  /* margin-top: 150px;
+  margin-left: -150px; */
+  margin: 0;
+  color: white;
+  background-color: rgb(46, 73, 133);
+  height: 180px;
+  width: 240px;
+  padding: 25px;
+  border-radius: 10px;
+
+  margin-right: 5px;
+}
+
+.bottom-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.weather > img {
+  width: 38px;
+  height: 38px;
+}
+/* .weather > p {
+  margin-right: -40px;
+} */
+
+.weather-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
@@ -334,8 +374,8 @@ footer {
   bottom: 0;
   width: 100%;
   height: 2.5rem;
-  background-color: rgb(182, 182, 182);
-  color: black;
+  background-color: rgb(32, 52, 94);
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,14 +383,14 @@ footer {
 
 .temperature {
   display: flex;
-  font-weight: 400;
   justify-content: center;
-  margin-left: 10px;
+  align-items: center;
+  /* margin-left: 10px; */
 }
 
 .weather img {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .leaflet-marker-icon {
@@ -371,6 +411,8 @@ footer {
   min-height: 50px;
   justify-content: center;
   align-items: center;
+  margin-top: -50px;
+  margin-bottom: 50px;
 }
 
 .draggable {
@@ -396,6 +438,7 @@ footer {
   align-items: center;
   margin-top: 100px;
   user-select: initial;
+  overflow-y: hidden;
 }
 
 .drag-icon {
@@ -481,4 +524,203 @@ footer {
 
 .drag-result > span {
   font-weight: 600;
+}
+
+.App-body-news {
+  width: 100%;
+  margin-bottom: 120px;
+  height: 100%;
+  display: flex;
+  /* justify-content: center; */
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+
+.card-temp {
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-top: 50px;
+  /* flex-grow: 1; */
+}
+
+.form-wrapper,
+.table-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mt-4 {
+  background-color: #2980b9 !important;
+}
+
+.App-table {
+  display: flex;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.wrapper {
+  width: 100% !important;
+}
+
+.App-admin {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-admin {
+  margin-bottom: 40px;
+  padding: 30px;
+  width: 50%;
+}
+
+.wrapper-users {
+  margin-top: 30px;
+}
+
+.weather-image {
+  width: 60px;
+  height: 60px;
+}
+
+.card-temp {
+  width: 200px;
+  /* background-color: rgba(40, 127, 184, 0.5); */
+}
+
+.news-page {
+  margin: 100px;
+  display: flex;
+  gap: 20px;
+}
+
+.news-container-detailed {
+  width: 15%;
+  /* border: 1px solid black; */
+  color: white;
+  min-height: 200px;
+  margin-top: 50px;
+  /* background-color: rgba(65, 176, 95, 0.2); */
+  border-radius: 10px;
+  background-color: rgba(40, 127, 184, 0.5);
+  height: 220px;
+  padding: 5px;
+}
+
+.overlay-news {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(6, 27, 41, 0.8);
+  border-radius: 10px;
+}
+
+.App-login {
+  text-align: center;
+  /* background-color: #e3e6eb;
+  min-height: 100vh;
+  height: 100%; */
+}
+
+.App-form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -75px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  flex-direction: column;
+}
+
+.form-button-login {
+  margin-top: 20px;
+  width: 150px;
+  height: 45px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.form-row input {
+  width: 150px;
+  font-size: 1rem;
+  align-items: flex-start;
+}
+
+/* .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.login-label {
+  justify-self: end;
+} */
+
+.container-drop {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.drop-areas {
+  width: 30%;
+}
+
+.drop-area {
+  border: 1px solid #ccc;
+  min-height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.draggable-items {
+  width: 60%;
+  border: 1px solid #ccc;
+  min-height: 150px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.item {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.item.draggable {
+  cursor: move;
+}
+
+.prevent-selection {
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Standard */
 }
