@@ -139,6 +139,11 @@ a {
   height: 200px;
   border-radius: 10px;
   cursor: pointer;
+  filter: grayscale(80%);
+}
+
+.monument:hover {
+  filter: grayscale(0);
 }
 
 .monument-full {

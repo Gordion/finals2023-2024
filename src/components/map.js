@@ -29,9 +29,24 @@ import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import Infobox from "./infobox";
 import text from "./details-texts.js";
 
+// const monumentImages = [
+//   { id: "profil", src: profil },
+//   { id: "koroleva", src: koroleva },
+//   { id: "zalyvky", src: zalyvky },
+//   { id: "bukovi", src: bukovi },
+//   { id: "muzey", src: muzey },
+// ];
+
+const findTextByPopup = (popupValue) => {
+  return text.find((item) => item.title === popupValue);
+};
+
 export default function Map() {
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [matchingText, setMatchingText] = useState(null);
   const [matchingTextResult, setMatchingTextResult] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
   const onMarkerClick = (e) => {
     const clickedMarker = e.target;
     const updatedMarker = {
@@ -39,9 +54,19 @@ export default function Map() {
       popup: clickedMarker.options.children.props.children,
     };
     setSelectedMarker(updatedMarker);
+
+    const matchingTextResult = findTextByPopup(updatedMarker.popup);
+    setMatchingText(matchingTextResult);
+
     toggleInfoBlock();
     console.log(selectedMarker);
   };
+
+  const onImageClick = (obj) => {
+    setSelectedPhoto(obj);
+    toggleInfoPhotoBlock();
+  };
+
   const museumIcon = new Icon({
     iconUrl: museum,
     iconSize: [38, 38],
@@ -98,27 +123,50 @@ export default function Map() {
   // }
 
   const [searchBlockVisible, setSearchBlockVisible] = useState(true);
-  const [infoBlockVisible, setInfoBlockVisible] = useState(true);
+  const [infoBlockVisible, setInfoBlockVisible] = useState(false);
+  const [infoPhotoBlockVisible, setInfoPhotoBlockVisible] = useState(false);
   const toggleSearchBlock = () => {
     setSearchBlockVisible(!searchBlockVisible);
   };
+  const toggleInfoPhotoBlock = () => {
+    //     const findTextByPopup = (popupValue) => {
+    //       console.log(popupValue, text);
+    //       return text.find((item) => item.title === popupValue);
+    //     };
+    // console.log();
+    //     if (selectedMarker && selectedMarker.popup) {
+    //       const matchingTextResult = findTextByPopup(selectedMarker.popup);
+    //       console.log(">>", matchingTextResult);
+    //       setMatchingText(matchingTextResult);
+    //     }
+    setInfoPhotoBlockVisible(!infoPhotoBlockVisible);
+  };
   const toggleInfoBlock = () => {
+    //     const findTextByPopup = (popupValue) => {
+    //       console.log(popupValue, text);
+    //       return text.find((item) => item.title === popupValue);
+    //     };
+    // console.log();
+    //     if (selectedMarker && selectedMarker.popup) {
+    //       const matchingTextResult = findTextByPopup(selectedMarker.popup);
+    //       console.log(">>", matchingTextResult);
+    //       setMatchingText(matchingTextResult);
+    //     }
     setInfoBlockVisible(!infoBlockVisible);
   };
-  const [matchingText, setMatchingText] = useState(null);
 
   useEffect(() => {
-    const findTextByPopup = (popupValue) => {
-      return text.find((item) => item.title === popupValue);
-    };
-
     if (selectedMarker && selectedMarker.popup) {
       const matchingTextResult = findTextByPopup(selectedMarker.popup);
       setMatchingText(matchingTextResult);
     }
-    console.log(matchingText);
-    setMatchingTextResult(matchingText);
-  }, [selectedMarker, setMatchingText, setMatchingTextResult]);
+    // console.log(matchingText);
+    // setMatchingTextResult(matchingText);
+  }, [selectedMarker, setMatchingText]);
+
+  console.log("infoBlockVisible", infoBlockVisible);
+  console.log("selectedMarker", selectedMarker);
+  console.log("matchingText", matchingText);
 
   return (
     <>
@@ -138,11 +186,14 @@ export default function Map() {
             <span className="search-text">Пошук</span>
             <p className="right"></p>
           </div>
-          <img className="monument" src={profil} />
-          <img className="monument" src={koroleva} />
-          <img className="monument" src={zalyvky} />
-          <img className="monument" src={bukovi} />
-          <img className="monument" src={muzey} />
+          {text.map((image) => (
+            <img
+              className="monument"
+              id={image.id}
+              src={image.image}
+              onClick={() => onImageClick(image)}
+            />
+          ))}
         </div>
       )}
       <div className="map">
@@ -174,11 +225,21 @@ export default function Map() {
       {infoBlockVisible && selectedMarker && (
         <Infobox
           cross={cross}
-          monImage={koroleva}
+          monImage={matchingText.image}
           toggleFunction={toggleInfoBlock}
           // title={text[0].title}
           title={matchingText.title}
           desc={matchingText.desc}
+        />
+      )}
+      {infoPhotoBlockVisible && selectedPhoto && (
+        <Infobox
+          cross={cross}
+          monImage={selectedPhoto.image}
+          toggleFunction={toggleInfoPhotoBlock}
+          // title={text[0].title}
+          title={selectedPhoto.title}
+          desc={selectedPhoto.desc}
         />
       )}
     </>
