@@ -7,7 +7,7 @@
 // } from "https://cdn.esm.sh/react-leaflet";
 import { MapContainer, Popup, Marker, TileLayer, useMap } from "react-leaflet";
 // import L from "leaflet";
-import { React, useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import museum from "../images/museumR.png";
 import lake from "../images/dockR.png";
 import forestProfile from "../images/treesR.png";
@@ -30,6 +30,18 @@ import Infobox from "./infobox";
 import text from "./details-texts.js";
 
 export default function Map() {
+  const [selectedMarker, setSelectedMarker] = useState(null);
+  const [matchingTextResult, setMatchingTextResult] = useState(null);
+  const onMarkerClick = (e) => {
+    const clickedMarker = e.target;
+    const updatedMarker = {
+      icon: clickedMarker.options.icon.options.iconUrl,
+      popup: clickedMarker.options.children.props.children,
+    };
+    setSelectedMarker(updatedMarker);
+    toggleInfoBlock();
+    console.log(selectedMarker);
+  };
   const museumIcon = new Icon({
     iconUrl: museum,
     iconSize: [38, 38],
@@ -57,17 +69,17 @@ export default function Map() {
   const markers = [
     {
       geolocation: [49.959405, 23.648103],
-      popUp: "Ліс Верещиця",
+      popUp: "Верещиця – давні букові ліси",
       icon: veresIcon,
     },
     {
       geolocation: [49.940307, 23.775011],
-      popUp: "Лісотипологічний профіль Андрія П'ясецького",
+      popUp: "Лісотипологічний профіль А.П’ясецького",
       icon: forestProfileIcon,
     },
     {
       geolocation: [49.925849, 23.766759],
-      popUp: "Торфове болото Заливки",
+      popUp: "Польодовикове торфове болото Заливки",
       icon: swampIcon,
     },
     {
@@ -77,10 +89,14 @@ export default function Map() {
     },
     {
       geolocation: [49.910431, 23.748792],
-      popUp: "Музей природи Розточчя",
+      popUp: "Музей природи, колонія сірої чаплі",
       icon: museumIcon,
     },
   ];
+  // function onMarkerClick(e) {
+  //   console.log("Marker clicked!", e.target.options.children.props.children);
+  // }
+
   const [searchBlockVisible, setSearchBlockVisible] = useState(true);
   const [infoBlockVisible, setInfoBlockVisible] = useState(true);
   const toggleSearchBlock = () => {
@@ -89,6 +105,20 @@ export default function Map() {
   const toggleInfoBlock = () => {
     setInfoBlockVisible(!infoBlockVisible);
   };
+  const [matchingText, setMatchingText] = useState(null);
+
+  useEffect(() => {
+    const findTextByPopup = (popupValue) => {
+      return text.find((item) => item.title === popupValue);
+    };
+
+    if (selectedMarker && selectedMarker.popup) {
+      const matchingTextResult = findTextByPopup(selectedMarker.popup);
+      setMatchingText(matchingTextResult);
+    }
+    console.log(matchingText);
+    setMatchingTextResult(matchingText);
+  }, [selectedMarker, setMatchingText, setMatchingTextResult]);
 
   return (
     <>
@@ -131,42 +161,24 @@ export default function Map() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {markers.map((marker) => (
-            <Marker position={marker.geolocation} icon={marker.icon}>
+            <Marker
+              position={marker.geolocation}
+              icon={marker.icon}
+              eventHandlers={{ click: onMarkerClick }}
+            >
               <Popup>{marker.popUp}</Popup>
             </Marker>
           ))}
-
-          {/* <Marker position={[49.917293, 23.751952]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker> */}
         </MapContainer>
       </div>
-      {infoBlockVisible && (
-        // <div className="detailed-info">
-        //   <img className="monument-full" src={koroleva} />
-        //   <img className="cross" src={cross} onClick={toggleInfoBlock} />
-        //   <div className="monument-info">
-        //     <span className="monument-title">
-        //       Королева гора над Янівським ставом
-        //     </span>
-        //     <p className="monument-text">
-        //       Саме тут Іван Франко написав свого "Мойсея". З цього місця
-        //       відкриваються величні панорами неповторних розточанських
-        //       ландшафтів. Польодовиковий останець, що височіє над Янівським
-        //       ставом, в минулому – одне з найулюбленіших місць відпочинку
-        //       польських королів.
-        //     </p>
-        //     <span className="monument-button">Продовження</span>
-        //   </div>
-        // </div>
+      {infoBlockVisible && selectedMarker && (
         <Infobox
           cross={cross}
           monImage={koroleva}
           toggleFunction={toggleInfoBlock}
-          title={text[0].title}
-          desc={text[0].desc}
+          // title={text[0].title}
+          title={matchingText.title}
+          desc={matchingText.desc}
         />
       )}
     </>
