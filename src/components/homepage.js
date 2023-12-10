@@ -2,8 +2,89 @@
 import videoBG from "../images/Rostochia_h264.mp4";
 import burger from "../images/hamburger-menu.svg";
 import weatherIcon from "../images/partly_cloudy.png";
+import React from "react";
+import axios from "axios";
 import WeatherComponent from "./weather";
+import { useState, useEffect } from "react";
 export default function Homepage() {
+  const [lastNews, setLastNews] = useState({});
+  const [lastNewsTwo, setLastNewsTwo] = useState({});
+  const [lastNewsThree, setLastNewsThree] = useState({});
+  const [lastNewsFour, setLastNewsFour] = useState({});
+  const [newsCollection, setNewsCollection] = useState([]);
+
+  const [news, setNews] = useState([]);
+  function testClick() {
+    console.log(news);
+  }
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost:4000/news/get-newsfour"
+        ); // Replace with your actual endpoint URL
+        setNews(response.data); // Set the retrieved news data in state
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
+
+    fetchNews(); // Call the function to fetch news on component mount
+  }, []);
+
+  // useEffect(() => {
+  //   async function fetchLastNewsData() {
+  //     const newsResp = await axios.get(
+  //       "http://localhost:4000/news/get-newsfour"
+  //     );
+  //     if (newsResp && newsResp.status === 200 && newsResp.data) {
+  //       console.log("newsrespdata", newsResp.data);
+  //       setNewsCollection(newsResp.data);
+  //     }
+  //   }
+  //   fetchLastNewsData();
+  // }, []);
+
+  // useEffect(() => {
+  //   async function fetchLastNewsData() {
+  //     const newsResp = await axios.get(
+  //       "http://localhost:4000/news/get-lastnews"
+  //     );
+  //     if (newsResp && newsResp.status === 200 && newsResp.data) {
+  //       console.log("newsrespdata", newsResp.data);
+  //       setLastNews(newsResp.data);
+  //     }
+  //   }
+  //   async function fetchLastNewsData() {
+  //     const newsResp = await axios.get(
+  //       "http://localhost:4000/news/get-lastnewstwo"
+  //     );
+  //     if (newsResp && newsResp.status === 200 && newsResp.data) {
+  //       console.log("newsrespdata", newsResp.data);
+  //       setLastNews(newsResp.data);
+  //     }
+  //   }
+  //   async function fetchLastNewsData() {
+  //     const newsResp = await axios.get(
+  //       "http://localhost:4000/news/get-lastnewsthree"
+  //     );
+  //     if (newsResp && newsResp.status === 200 && newsResp.data) {
+  //       console.log("newsrespdata", newsResp.data);
+  //       setLastNews(newsResp.data);
+  //     }
+  //   }
+  //   async function fetchLastNewsData() {
+  //     const newsResp = await axios.get(
+  //       "http://localhost:4000/news/get-lastnewsfour"
+  //     );
+  //     if (newsResp && newsResp.status === 200 && newsResp.data) {
+  //       console.log("newsrespdata", newsResp.data);
+  //       setLastNews(newsResp.data);
+  //     }
+  //   }
+
+  //   fetchLastNewsData();
+  // }, []);
   return (
     <div className="main">
       <div className="overlay"></div>
@@ -22,7 +103,9 @@ export default function Homepage() {
       </section> */}
       <section className="main-title">
         <p>Природний заповідник "Розточчя"</p>
-        <div className="main-button">Відкрити карту</div>
+        <div className="main-button" onClick={testClick}>
+          Відкрити карту
+        </div>
       </section>
       <div className="bottom-bar">
         <section className="main-news">
