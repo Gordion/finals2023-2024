@@ -63,10 +63,11 @@ export default function News() {
     //     </div>
     //   ))}
     // </div>
-    <div className="news-page">
+    <div className="news-page" onClick={() => console.log(newsCollection)}>
       {newsCollection.reverse().map((item, index) =>
         item && item.timestamp ? (
           <NewsContainer
+            className="news-block"
             key={item.id}
             backgroundImage={backgroundImages[index % backgroundImages.length]}
             item={item} // Pass the entire 'item' object as a prop

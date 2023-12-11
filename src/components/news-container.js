@@ -35,7 +35,7 @@ const NewsContainer = ({ backgroundImage, item }) => {
       <div style={contentStyle}>
         <div className="news-timestamp">{item.timestamp}</div>
         <div className="news-head">{item.name}</div>
-        <div className="news-body">{item.description}</div>
+        <div className="news-body news-block-text">{item.description}</div>
       </div>
     </div>
   );

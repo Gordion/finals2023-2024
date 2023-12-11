@@ -4,6 +4,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import brain from "brain.js";
 import brainModel from "../models/brain_model.json";
 import { createNeuralNetwork } from "../utils/neuralNetwork";
+import cross from "../images/close.png";
 
 const tasks = [
   { id: "woods", content: "Ліси" },
@@ -198,8 +199,13 @@ export default function Touroute() {
         <div>
           <div className="popup-neuro">
             Найкращим маршрутом для вас стане {neuralRoute}
+            <img
+              className="cross"
+              src={cross}
+              onClick={() => setNeuralRoute(null)}
+            />
           </div>
-          <div className="overlay"></div>
+          <div className="overlay-neuro"></div>
         </div>
       )}
       {/* <div className="drag-list">
@@ -251,7 +257,14 @@ export default function Touroute() {
       >
         {Object.entries(columns).map(([columnId, column], index) => {
           return (
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
               <div className="number">{column.number}</div>
               <Droppable droppableId={columnId} key={columnId}>
                 {(provided, snapshot) => {
@@ -265,8 +278,8 @@ export default function Touroute() {
                         //   ? "lightblue"
                         //   : "lightgrey",
                         padding: 4,
-                        minWidth: 400,
-                        minHeight: 200,
+                        // minWidth: 400,
+                        // minHeight: 200,
                       }}
                     >
                       {column.items.map((item, index) => {
@@ -283,20 +296,21 @@ export default function Touroute() {
                             {(provided, snapshot) => {
                               return (
                                 <div
+                                  className="draggable"
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
                                   style={{
-                                    isplay: "flex",
-                                    flexDirection: "row",
-                                    userSelect: "none",
-                                    padding: 16,
-                                    margin: "0 0 8px 0",
-                                    minHeight: "50px",
-                                    backgroundColor: snapshot.isDragging
-                                      ? "#263B4A"
-                                      : "#456C86",
-                                    color: "white",
+                                    // isplay: "flex",
+                                    // flexDirection: "row",
+                                    // userSelect: "none",
+                                    // padding: 16,
+                                    // margin: "0 0 8px 0",
+                                    // minHeight: "50px",
+                                    // backgroundColor: snapshot.isDragging
+                                    //   ? "#263B4A"
+                                    //   : "#456C86",
+                                    // color: "white",
                                     ...provided.draggableProps.style,
                                   }}
                                 >
