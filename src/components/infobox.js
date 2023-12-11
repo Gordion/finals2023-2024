@@ -4,7 +4,7 @@ export default function Infobox(props) {
   return (
     <div className="detailed-info">
       <img className="monument-full" src={props.monImage} />
-      <img className="cross" src={cross} onClick={props.toggleFunction} />
+      <img className="cross-map" src={cross} onClick={props.toggleFunction} />
       <div className="monument-info">
         <span className="monument-title">
           {props.title}

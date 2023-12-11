@@ -5,6 +5,7 @@ import brain from "brain.js";
 import brainModel from "../models/brain_model.json";
 import { createNeuralNetwork } from "../utils/neuralNetwork";
 import cross from "../images/close.png";
+import { Outlet, Link } from "react-router-dom";
 
 const tasks = [
   { id: "woods", content: "Ліси" },
@@ -161,15 +162,15 @@ export default function Touroute() {
     console.log(param);
     switch (param) {
       case "m":
-        return "Музей";
+        return "Музей Природи Розточчя";
       case "qm":
         return "Королева Гора";
       case "fv":
-        return "Верещиця";
+        return "Ліс Верещиця";
       case "fp":
-        return "Лісотипологічний профіль";
+        return "Лісотипологічний профіль П'ясецького";
       case "s":
-        return "Болото";
+        return "Торфове Болото Заливки";
     }
   }
 
@@ -198,7 +199,10 @@ export default function Touroute() {
       {neuralRoute && (
         <div>
           <div className="popup-neuro">
-            Найкращим маршрутом для вас стане {neuralRoute}
+            Найкращим маршрутом для вас стане{" "}
+            <Link className="route-map-link" to="/map">
+              {neuralRoute}
+            </Link>
             <img
               className="cross"
               src={cross}

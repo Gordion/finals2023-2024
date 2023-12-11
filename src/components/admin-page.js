@@ -75,7 +75,7 @@ const AdminPage = () => {
         <div className="form-container">
           <div className="form-admin">
             <h2>News</h2>
-            <Form>
+            <Form className="custom-form">
               <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control
@@ -106,7 +106,7 @@ const AdminPage = () => {
                 size="lg"
                 block="block"
                 type="submit"
-                className="mt-4"
+                className="custom-btn"
                 onClick={onSubmit}
               >
                 Submit
@@ -116,7 +116,7 @@ const AdminPage = () => {
         </div>
         <div className="stats-container">
           <div className="stats-column">
-            <table className="table table-striped table-blue">
+            <table className="custom-table">
               <thead className="thead-blue">
                 <tr>
                   <td>Name</td>

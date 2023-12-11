@@ -5,6 +5,7 @@ import weatherIcon from "../images/partly_cloudy.png";
 import React from "react";
 import axios from "axios";
 import WeatherComponent from "./weather";
+import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function Homepage() {
   const [lastNews, setLastNews] = useState({});
@@ -104,7 +105,7 @@ export default function Homepage() {
       <section className="main-title">
         <p>Природний заповідник "Розточчя"</p>
         <div className="main-button" onClick={testClick}>
-          Відкрити карту
+          <Link to="/map">Відкрити карту</Link>
         </div>
       </section>
       <div className="bottom-bar">

@@ -7,11 +7,12 @@ import rost3 from "../images/rost-3.jpg";
 import rost4 from "../images/rost-4.jpg";
 import rost5 from "../images/rost-5.jpg";
 import NewsContainer from "./news-container";
-
+import cross from "../images/close.png";
 export default function News() {
   const [newsCollection, setNewsCollection] = useState([]);
   const [backgroundImages, setBackgroundImages] = useState([]);
-
+  const [currentNews, setCurrentNews] = useState();
+  const [displayedText, setDisplayedText] = useState("");
   // const getRandomImage = () => {
   //   const randomIndex = Math.floor(Math.random() * backgroundImages.length);
   //   return backgroundImages[randomIndex];
@@ -19,7 +20,14 @@ export default function News() {
   // const containerStyle = {
   //   backgroundImage: `url(${getRandomImage()})`,
   // };
-
+  const handleClick = (id) => {
+    // Find the news item in the newsCollection based on the clicked ID
+    const clickedNews = newsCollection.find((news) => news._id === id);
+    if (clickedNews) {
+      // Set the displayed text using the content from the clicked news item
+      setCurrentNews(clickedNews.text);
+    }
+  };
   useEffect(() => {
     axios
       .get("http://localhost:4000/news")
@@ -51,6 +59,9 @@ export default function News() {
 
     generateBackgroundImages();
   }, [newsCollection]);
+  const handleShowOverlay = (id) => {
+    setCurrentNews(id); // Update the state
+  };
   return (
     // <div className="App-body-news">
     //   {newsCollection.reverse().map((item) => (
@@ -63,18 +74,42 @@ export default function News() {
     //     </div>
     //   ))}
     // </div>
-    <div className="news-page" onClick={() => console.log(newsCollection)}>
-      {newsCollection.reverse().map((item, index) =>
-        item && item.timestamp ? (
-          <NewsContainer
-            className="news-block"
-            key={item.id}
-            backgroundImage={backgroundImages[index % backgroundImages.length]}
-            item={item} // Pass the entire 'item' object as a prop
-          />
-        ) : null
+    <div>
+      {currentNews && newsCollection.length > 0 && (
+        <div>
+          <div className="popup-news">
+            <h3 className="popup-news-title">{currentNews.name}</h3>
+            {currentNews.description}
+            <img
+              className="cross-news"
+              src={cross}
+              onClick={() => setCurrentNews(null)}
+            />
+          </div>
+          <div className="overlay-textnews"></div>
+        </div>
       )}
-      {/* Other content of your news page */}
+      <div
+        className="news-page"
+        onClick={() => console.log(newsCollection[0]._id)}
+      >
+        {newsCollection.reverse().map((item, index) =>
+          item && item.timestamp ? (
+            <NewsContainer
+              onClick={() => handleClick(item._id)}
+              className="news-block"
+              key={item.id}
+              backgroundImage={
+                backgroundImages[index % backgroundImages.length]
+              }
+              item={item} // Pass the entire 'item' object as a prop
+              overlayInfo={currentNews}
+              showOverlay={handleShowOverlay}
+            />
+          ) : null
+        )}
+        {/* Other content of your news page */}
+      </div>
     </div>
   );
 }

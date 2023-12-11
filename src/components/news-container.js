@@ -1,14 +1,16 @@
 import React from "react";
 
-const NewsContainer = ({ backgroundImage, item }) => {
+const NewsContainer = ({ backgroundImage, item, currentNews, showOverlay }) => {
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    height: "200px", // Adjust the height based on your design
-    width: "400px", // Adjust the width based on your design
+    minHeight: "250px",
+    minWidth: "400px",
     position: "relative", // Ensure positioning for absolute content
     borderRadius: "10px",
+    textAlign: "center",
+    // marginTop: "15px",
   };
 
   const overlayStyle = {
@@ -35,7 +37,17 @@ const NewsContainer = ({ backgroundImage, item }) => {
       <div style={contentStyle}>
         <div className="news-timestamp">{item.timestamp}</div>
         <div className="news-head">{item.name}</div>
-        <div className="news-body news-block-text">{item.description}</div>
+        <div
+          className="news-body news-block-text"
+          onClick={() => {
+            showOverlay(item);
+            // console.log("currentnews", currentNews);
+            console.log("itemid", item._id);
+          }}
+        >
+          {/* {item.description} */}
+          <div className="news-button">Переглянути</div>
+        </div>
       </div>
     </div>
   );

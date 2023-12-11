@@ -21,7 +21,12 @@ const NewsTableRow = ({ obj, onRowDelete }) => {
       <td className="data-tbody">{obj.timestamp}</td>
       {onRowDelete && (
         <td className="data-tbody">
-          <Button onClick={deleteNews} size="sm" variant="danger">
+          <Button
+            onClick={deleteNews}
+            className="custom-button custom-danger-button"
+            size="sm"
+            variant="danger"
+          >
             Delete
           </Button>
         </td>

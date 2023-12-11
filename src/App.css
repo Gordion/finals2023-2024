@@ -196,6 +196,19 @@ a {
   cursor: pointer;
 }
 
+.cross-map {
+  position: absolute;
+  z-index: 5000;
+  height: 28px;
+  width: 28px;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  /* margin-right: 500px; */
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
 .list-search-bar {
   display: flex;
   /* justify-content: center; */
@@ -219,6 +232,10 @@ a {
 .right {
   flex: 1;
 } */
+
+.login-label {
+  text-align: justify;
+}
 
 .listSearch {
   width: 38px;
@@ -578,16 +595,37 @@ body {
   width: 100% !important;
 }
 
-.App-admin {
+.form-container {
   display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.stats-container {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+.stats-column {
+  margin-bottom: 40px;
+  padding: 0 30px;
+  width: 50%;
+}
+
+.App-admin {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
 .form-admin {
-  margin-bottom: 40px;
+  /* margin-bottom: 40px;
   padding: 30px;
-  width: 50%;
+  width: 50%; */
 }
 
 .wrapper-users {
@@ -597,6 +635,10 @@ body {
 .weather-image {
   width: 60px;
   height: 60px;
+}
+thead {
+  background-color: rgb(6, 6, 126);
+  color: white;
 }
 
 .card-temp {
@@ -670,6 +712,7 @@ body {
   border: none;
   border-radius: 10px;
   font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .form-row input {
@@ -748,7 +791,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   width: 250px;
-  height: 100px;
+  min-height: 100px;
   background: whitesmoke;
   box-shadow: 0 0 10px 2px rgba(202, 202, 202, 0.5);
   border-radius: 10px;
@@ -780,8 +823,207 @@ body {
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide the overflowing text */
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 .news-block-text {
   text-overflow: ellipsis;
+}
+
+.news-button {
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.news-timestamp {
+  text-align: center;
+  color: rgb(211, 211, 211);
+  padding-top: 15px;
+}
+
+.popup-news {
+  position: fixed;
+  z-index: 100;
+  color: black;
+  font-size: 1.5rem;
+  text-align: center;
+  max-width: 50%;
+  max-height: 50%;
+  background: whitesmoke;
+  box-shadow: 0 0 10px 2px rgba(202, 202, 202, 0.5);
+  border-radius: 10px;
+  margin: 0 auto;
+  /* margin-top: 140px; */
+  padding: 35px;
+  left: 0;
+  right: 0;
+  /* text-size-adjust: 80%; */
+  text-align: justify;
+}
+
+.overlay-textnews {
+  z-index: 99;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.cross-news {
+  position: absolute;
+  z-index: 5000;
+  height: 28px;
+  width: 28px;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  /* margin-right: 500px; */
+  cursor: pointer;
+}
+
+.popup-news-title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.route-map-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+}
+.data-tbody {
+  vertical-align: middle;
+}
+/* Styles for table rows */
+.custom-table tr {
+  border-bottom: 1px solid #dee2e6; /* Separator between rows */
+}
+
+/* Styles for alternating rows (striped effect) */
+.custom-table tr:nth-child(even) {
+  background-color: #f6f8fa; /* Light background color */
+}
+
+/* Styles for table cells */
+.custom-table td,
+.custom-table th {
+  padding: 8px 12px; /* Adjust as needed */
+  text-align: left;
+}
+
+/* Styles for table header */
+.custom-table th {
+  background-color: rgb(32, 52, 94); /* Blue header background color */
+  color: #fff; /* Text color */
+}
+
+.thead-blue {
+  background-color: rgb(32, 52, 94); /* Blue background color */
+  color: #fff; /* Text color */
+}
+
+.custom-button {
+  padding: 6px 12px; /* Adjust padding as needed */
+  font-size: 14px; /* Adjust font size as needed */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  margin: 4px 2px;
+  transition: background-color 0.3s;
+}
+
+/* Styles for the danger variant */
+.custom-danger-button {
+  background-color: #dc3545; /* Red color for danger variant */
+}
+
+/* Hover effect */
+.custom-danger-button:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+
+/* Styles for the form */
+.custom-form {
+  width: 600px;
+  margin: 0 auto;
+}
+
+/* Styles for form labels */
+.custom-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Styles for form inputs */
+.custom-form input[type="text"],
+.custom-form input[type="date"],
+.custom-form textarea {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Styles for form input focus */
+.custom-form input[type="text"]:focus,
+.custom-form input[type="date"]:focus,
+.custom-form textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Styles for form textarea */
+.custom-form textarea {
+  resize: vertical;
+}
+
+/* Styles for submit button */
+.custom-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+/* Styles for submit button hover */
+.custom-btn:hover {
+  color: #fff;
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
