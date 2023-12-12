@@ -30,9 +30,9 @@ export default function Layout() {
           <li className={currentPage === "/touroute" ? "current-selected" : ""}>
             <Link to="/touroute">Кращі маршрути</Link>
           </li>
-          <li className={currentPage === "/dnd" ? "current-selected" : ""}>
+          {/* <li className={currentPage === "/dnd" ? "current-selected" : ""}>
             <Link to="/dnd">dnd</Link>
-          </li>
+          </li> */}
           <li
             className={currentPage === "/secondary" ? "current-selected" : ""}
           >

@@ -50,7 +50,7 @@ function App() {
           <Route path="/touroute" element={<Touroute />} />
           <Route path="/news" element={<News />} />
           <Route path="/secondary" element={<Secondary />} />
-          <Route path="/dnd" element={<DND />} />
+          {/* <Route path="/dnd" element={<DND />} /> */}
           <Route
             path="/login-user"
             element={<Loginuser />}

@@ -110,22 +110,19 @@ export default function Homepage() {
       </section>
       <div className="bottom-bar">
         <section className="main-news">
-          <div className="news-container">
-            <div className="news-head">Останні новини</div>
-            <div className="news-body">
-              У Львівській ОВА планують розробити стратегію розвитку території
-              біосферного резервату «Розточчя»
+          {news[0] && news.length > 0 && (
+            <div className="news-container">
+              <div className="news-head">Останні новини</div>
+              <div className="news-body">{news[0].name}</div>
+              {/* <div className="news-link">До інших новин</div> */}
             </div>
-            {/* <div className="news-link">До інших новин</div> */}
-          </div>
-          <div className="news-container">
-            <div className="news-head">Останні новини</div>
-            <div className="news-body">
-              На Львівщині презентували маршрут до найбільш цінних територій
-              спадщини ЮНЕСКО
+          )}
+          {news[2] && news.length > 0 && (
+            <div className="news-container">
+              <div className="news-head">Останні новини</div>
+              <div className="news-body">{news[2].name}</div>
             </div>
-            {/* <div className="news-link">До інших новин</div> */}
-          </div>
+          )}
           {/* <section className="weather">
             <p>Івано-Франково</p>
             <div className="weather-box">
@@ -137,23 +134,18 @@ export default function Homepage() {
             </div>
           </section> */}
           <WeatherComponent />
-          <div className="news-container">
-            <div className="news-head">Останні новини</div>
-            <div className="news-body">
-              Біля Львова відкрили новий туристичний маршрут. Протяжність нового
-              туристичного шляху – 6 кілометрів.
+          {news[1] && news.length > 0 && (
+            <div className="news-container">
+              <div className="news-head">Останні новини</div>
+              <div className="news-body">{news[1].name}</div>
             </div>
-            {/* <div className="news-link">До інших новин</div> */}
-          </div>
-          <div className="news-container">
-            <div className="news-head">Останні новини</div>
-            <div className="news-body">
-              Три природні заповідники, які необхідно відвідати усією сім'єю.
-              Розточчя. Медобори. Ґорґани
+          )}
+          {news[3] && news.length > 0 && (
+            <div className="news-container">
+              <div className="news-head">Останні новини</div>
+              <div className="news-body">{news[3].name}</div>
             </div>
-
-            {/* <div className="news-link">До інших новин</div> */}
-          </div>
+          )}
         </section>
         {/* <div className="news-link">До інших новин</div> */}
         {/* <section className="weather">
